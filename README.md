@@ -1,2 +1,2 @@
-# TestWithReact-2023
-- Practicando con API en React JS
+# API - Rick And Morty
+- Usando la API de Rick and Mort en React JS, desde 0
