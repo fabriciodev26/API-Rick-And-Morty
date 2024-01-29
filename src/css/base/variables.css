@@ -1,0 +1,43 @@
+:root {
+ --bg-color-white: #F1F1F1;
+ --bg-color-black: #252525;
+ --bg-color-primary: #434343;
+ --bg-color-secondary: #ffff7f;
+ --bg-color-tertiary: #90dd87;
+}
+
+
+/* // $font-path: '../../../public/';
+// $font-family: kollektif;
+// $font-file: 'Kollektif.ttf';
+// $color-white: #F1F1F1;
+// $color-black: #252525;
+// $color-blue: #1c345c;
+// $color-pink-light: #ecdcdc;
+// $color-pink-light-two: #ecccdc;
+// $color-pink: #f48ca4;
+
+
+// // Regular font
+// @font-face {
+//     font-family: $font-family;
+//     src: url('#{$font-path}#{$font-file}') format('truetype');
+//     font-weight: normal;
+//     font-style: normal;
+// }
+
+// // Bold font
+// @font-face {
+//     font-family: $font-family;
+//     src: url('#{$font-path}Kollektif-Bold.ttf') format('truetype');
+//     font-weight: bold;
+//     font-style: normal;
+// }
+
+// // Bold Italic font
+// @font-face {
+//     font-family: $font-family;
+//     src: url('#{$font-path}Kollektif-BoldItalic.ttf') format('truetype');
+//     font-weight: bold;
+//     font-style: italic;
+// } */
