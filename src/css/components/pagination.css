@@ -1,0 +1,27 @@
+.paginationButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+
+    & .btn {
+        border: none;
+        padding: .5rem 1rem;
+
+        &:hover {
+            background-color: var(--bg-color-black);
+            cursor: pointer;
+            color: var(--bg-color-white);
+            transition-duration: 500ms, 100ms;
+            transition-property: background-color, color;
+            transition-timing-function: ease;
+        }
+    }
+    /* & .paginationButton__next {
+
+    }
+    & .paginationButton__prev {
+
+    } */
+}
