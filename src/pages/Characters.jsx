@@ -2,6 +2,8 @@ import { Pagination } from "@/components/Pagination.jsx";
 import { fetchData } from "@/fetchData.js";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { StatusIndicator } from "../components/StatusIndicator";
 
 export const Characters = ({ url }) => {
   const [character, setCharacter] = useState([]);
@@ -34,15 +36,33 @@ export const Characters = ({ url }) => {
         prev={characterPageInfo.prev}
         onPageChange={handlePageChange}
       />
-      <section>
+      <section className="list-characters">
         {character.map((char) => (
-          <div key={char.id}>
-            <h2>{char.name}</h2>
+          <article className="item-character" key={char.id}>
+            {console.log(char.id)}
             <img src={char.image} alt={char.name} />
-            <span>{char.gender}</span>
-          </div>
+            <h2>{char.name}</h2>
+            <div className="container">
+              <span>
+                <StatusIndicator status={char.status} />
+                {char.status} - {char.species}
+              </span>
+              <span>Genero: {char.gender}</span>
+              <span className="origin-link">
+                Origen:
+                <Link to={`/locations/${char.id}`}>{char.origin.name}</Link>
+              </span>
+            </div>
+            <Link to={`${char.id}`}>Ver Mas</Link>
+          </article>
         ))}
       </section>
+      <Pagination
+        page={currentPage}
+        next={characterPageInfo.next}
+        prev={characterPageInfo.prev}
+        onPageChange={handlePageChange}
+      />
     </>
   );
 };

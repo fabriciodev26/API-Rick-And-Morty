@@ -8,6 +8,9 @@
     & .btn {
         border: none;
         padding: .5rem 1rem;
+        transition-duration: 500ms, 100ms;
+        transition-property: background-color, color;
+        transition-timing-function: ease;
 
         &:hover {
             background-color: var(--bg-color-black);

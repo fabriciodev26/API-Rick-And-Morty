@@ -1,0 +1,65 @@
+.list-characters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+
+
+    & .item-character {
+        display: flex;
+        flex-direction: column;
+        background-color: var(--bg-color-primary);
+        & h2 {
+            background-color: var(--bg-color-tertiary);
+            color: var(--bg-color-black);
+            padding: 1rem 0;
+            margin: 0;
+            width: 100%;
+            text-align: center;
+        }
+        & .container {
+            color: var(--bg-color-white);
+            display: grid;
+            padding: 1.3rem 2rem;
+            gap: .5rem;
+        }
+        & .origin-link {
+            display: grid;
+            gap: .5rem;
+            & a {
+                text-decoration: none;
+                color: var(--bg-color-white);
+                transition-duration: 500ms;
+                transition-property: color;
+                transition-timing-function: ease;
+                letter-spacing: 1px;
+                &:hover {
+                    transition-duration: 500ms;
+                    transition-property: color;
+                    transition-timing-function: ease;
+                    letter-spacing: 1px;
+                    color: var(--bg-color-tertiary);
+                }
+            }
+        }
+        &  > a {
+            border-top: 1px solid var(--bg-color-white);
+            color: var(--bg-color-white);
+            text-decoration: none;
+            padding: 1rem;
+            text-align: center;
+            transition-duration: 500ms;
+            transition-property: color, background-color;
+            transition-timing-function: ease;
+            letter-spacing: 1px;
+            &:hover {
+                transition-duration: 500ms;
+                transition-property: color, background-color;
+                transition-timing-function: ease;
+                letter-spacing: 1px;
+                background-color: var(--bg-color-secondary);
+                color: var(--bg-color-black);
+            }
+        }
+    }
+}

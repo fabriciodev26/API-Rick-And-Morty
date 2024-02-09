@@ -1,0 +1,33 @@
+.view-data {
+    padding-top: 2rem;
+    display: flex;
+    justify-content: center;
+    & .table {
+        & thead {
+            & tr {
+                font-size: 1.1rem;
+            }
+        }
+
+        & .tbody {
+            & th {
+                padding: .5rem;
+            }
+
+            & th > img {
+                width: 15%;
+                border-radius: 50%;
+                -webkit-border-radius: 50%;
+                -moz-border-radius: 50%;
+                -ms-border-radius: 50%;
+                -o-border-radius: 50%;
+            }
+
+            & th > a {
+                color: var(--bg-color-black);
+                font-size: 1.2rem;
+                text-decoration: none;
+            }
+        }
+    }
+}
