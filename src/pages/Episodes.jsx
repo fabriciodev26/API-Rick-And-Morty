@@ -2,6 +2,7 @@ import { Pagination } from "@/components/Pagination.jsx";
 import { fetchData } from "@/fetchData.js";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 export const Episodes = ({ url }) => {
   const [episode, setEpisode] = useState([]);
   const [episodePageInfo, setEpisodePageInfo] = useState([]);
@@ -35,6 +36,7 @@ export const Episodes = ({ url }) => {
             <h2>{episodes.name}</h2>
             <strong>{episodes.episode}</strong>
             <span>{episodes.air_date}</span>
+            <NavLink to={`${episodes.id}`}> Ver Mas</NavLink>
           </div>
         ))}
       </section>

@@ -2,6 +2,7 @@ import { Pagination } from "@/components/Pagination.jsx";
 import { fetchData } from "@/fetchData.js";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 export const Locations = ({ url }) => {
   const [location, setLocation] = useState([]);
   const [locationPageInfo, setLocationPageInfo] = useState([]);
@@ -37,6 +38,7 @@ export const Locations = ({ url }) => {
             <h2>{locations.name}</h2>
             <span>{locations.type}</span>
             <strong>{locations.dimension}</strong>
+            <NavLink to={`${locations.id}`}> Ver Mas</NavLink>
           </div>
         ))}
       </section>
