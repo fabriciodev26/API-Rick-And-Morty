@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+
 export const SearchComponent = ({ url }) => {
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
@@ -8,15 +9,10 @@ export const SearchComponent = ({ url }) => {
 
   const handleInputChange = (e) => {
     setSearch(e.target.value);
-    handleSearch();
   };
 
-  const handleTypeChange = (e) => {
-    setSearchType(e.target.value);
-    handleSearch();
-  };
-
-  const handleSearch = async () => {
+  const handleSearch = async (e) => {
+    e.preventDefault(); // Prevenir el comportamiento por defecto del formulario
     try {
       let apiUrl;
       switch (searchType) {
@@ -36,24 +32,19 @@ export const SearchComponent = ({ url }) => {
       const response = await fetch(apiUrl);
       const data = await response.json();
 
-      switch (searchType) {
-        case "characters":
-          setSearchResults(data.results);
-          break;
-        case "episodes":
-          setSearchResults(data.results);
-          break;
-        case "locations":
-          setSearchResults(data.results);
-          break;
-        default:
-          console.log("tipo de busqueda no valido");
-          return;
-      }
+      setSearchResults(data.results || []);
     } catch (e) {
       console.log("Error al realizar la busqueda", e);
+      setSearchResults([]); // Limpiar los resultados en caso de error
     }
   };
+
+  const handleTypeChange = (e) => {
+    setSearchType(e.target.value);
+  };
+
+  // Verificar si al menos un resultado tiene imagen
+  const hasImage = searchResults.some((result) => result.image);
 
   return (
     <>
@@ -75,32 +66,40 @@ export const SearchComponent = ({ url }) => {
           <option value="episodes">Episodios</option>
         </select>
       </form>
-      <section className="view-data">
-        <table className="table">
-          <thead className="thead">
-            <tr>
-              <th scope="col">ID</th>
-              <th scope="col">Nombre</th>
-              <th scope="col">Imagen</th>
-              <th scope="col">Enlace</th>
-            </tr>
-          </thead>
-          <tbody className="tbody">
-            {searchResults?.map((result) => (
-              <tr key={result.id}>
-                <th>{result.id}</th>
-                <th>{result.name}</th>
-                <th>
-                  <img src={result.image} alt={result.name} />
-                </th>
-                <th>
-                  <NavLink to={`${searchType}/${result.id}`}> Ver Mas</NavLink>
-                </th>
+      {searchResults.length > 0 && (
+        <section className="view-data">
+          <table className="table">
+            <thead className="thead">
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                {hasImage && <th scope="col">Imagen</th>}
+                <th scope="col">Enlace</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </section>
+            </thead>
+            <tbody className="tbody">
+              {searchResults.map((result) => (
+                <tr key={result.id}>
+                  <th>{result.id}</th>
+                  <th>{result.name}</th>
+                  {hasImage && (
+                    <th>
+                      {result.image ? (
+                        <img src={result.image} alt={result.name} />
+                      ) : (
+                        "N/A"
+                      )}
+                    </th>
+                  )}
+                  <th>
+                    <NavLink to={`${searchType}/${result.id}`}>Ver Más</NavLink>
+                  </th>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </section>
+      )}
     </>
   );
 };
