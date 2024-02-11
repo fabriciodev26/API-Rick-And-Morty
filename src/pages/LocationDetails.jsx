@@ -1,7 +1,8 @@
 import { fetchData } from "@/fetchData.js";
+import { getIdURL } from "@/getIdUrl";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 export const LocationDetails = ({ url }) => {
   const { locationId } = useParams();
   const [locationDetails, setlocationDetails] = useState(null);
@@ -27,6 +28,26 @@ export const LocationDetails = ({ url }) => {
   return (
     <>
       <h2>{locationDetails.name}</h2>
+      <p>{locationDetails.type}</p>
+      <p>{locationDetails.dimension}</p>
+      <table>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Characters in that dimension</th>
+        </tr>
+        <tbody>
+          {locationDetails.residents.map((character, characterID) => (
+            <tr key={characterID}>
+              <th scope="row">{characterID}</th>
+              <td>
+                <Link to={`/characters/${getIdURL(character)}`}>
+                  {character}
+                </Link>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </>
   );
 };

@@ -39,7 +39,6 @@ export const Characters = ({ url }) => {
       <section className="list-characters">
         {character.map((char) => (
           <article className="item-character" key={char.id}>
-            {console.log(char.id)}
             <img src={char.image} alt={char.name} />
             <h2>{char.name}</h2>
             <div className="container">
